@@ -130,10 +130,3 @@ functions:
       DB_USER_NAME: ${env:DB_USER_NAME}
       DB_PASSWORD: ${env:DB_PASSWORD}
       EVENT_SENDER_LAMBDA_NAME: ${env:PROJECT_ID}-${sls:stage}-event-sender
-
-
-#resources:
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"

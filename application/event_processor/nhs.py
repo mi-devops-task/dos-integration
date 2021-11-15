@@ -15,6 +15,10 @@ class NHSEntity:
         for key, value in entity_data.items():
             setattr(self, key, value)
 
-    def ods5(self):
-        """First 5 digits of odscode"""
+    def ods5(self) -> str:
+        """Returns the ods5 code for this service
+
+        Returns:
+            str: First 5 digits of odscode
+        """
         return self.odscode[0:5]
