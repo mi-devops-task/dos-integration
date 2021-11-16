@@ -30,7 +30,7 @@ deploy: # Deploys whole project - mandatory: PROFILE
 	if [ "$(PROFILE)" == "task" ]; then
 		make terraform-apply-auto-approve STACKS=api-key
 	fi
-	make terraform-apply-auto-approve STACKS=lambda-security-group
+	make terraform-apply-auto-approve STACKS=lambda-security-group,lambda-iam-roles
 	make serverless-deploy
 
 sls-only-deploy: # Deploys all lambdas - mandatory: PROFILE, VERSION=[commit hash-timestamp]
@@ -39,7 +39,7 @@ sls-only-deploy: # Deploys all lambdas - mandatory: PROFILE, VERSION=[commit has
 
 undeploy: # Undeploys whole project - mandatory: PROFILE
 	make serverless-remove VERSION="any"
-	make terraform-destroy-auto-approve STACKS=lambda-security-group
+	make terraform-destroy-auto-approve STACKS=lambda-security-group,lambda-iam-roles
 	if [ "$(PROFILE)" == "task" ]; then
 		make terraform-destroy-auto-approve STACKS=api-key
 	fi

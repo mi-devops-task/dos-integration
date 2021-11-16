@@ -10,7 +10,7 @@ DOS_API_GATEWAY_REQUEST_TIMEOUT := 30
 DOS_API_GATEWAY_URL := $(or $(DOS_API_GATEWAY_URL), "//")
 MOCK_MODE := False
 
-DB_SERVER := http://uec-dos-int-di-161.dos-db.k8s-nonprod.texasplatform.uk/
+DB_SERVER := uec-dos-int-di-161.dos-db.k8s-nonprod.texasplatform.uk
 DB_PORT := 5432
 DB_NAME := postgres
 DB_USER_NAME := dbuser
@@ -27,3 +27,9 @@ TF_VAR_nhs_uk_api_key_key := NHS_UK_API_KEY
 
 # Lambda Security Group
 TF_VAR_lambda_security_group_name := $(PROJECT_ID)-$(ENVIRONMENT)-lambda-sg
+TF_VAR_dos_db_name := uec-dos-int-di-161
+
+# IAM Roles
+TF_VAR_event_receiver_role_name := $(PROJECT_ID)-event-receiver-role
+TF_VAR_event_processor_role_name := $(PROJECT_ID)-event-processor-role
+TF_VAR_event_sender_role_name := $(PROJECT_ID)-event-sender-role
