@@ -36,7 +36,6 @@ provider:
     lambda: true
 
 custom:
-  pythonVersion: ${env:PYTHON_VERSION_MAJOR}.${env:PYTHON_VERSION_MINOR}
   secret: ${ssm:/aws/reference/secretsmanager/${env:API_GATEWAY_API_KEY_NAME}}
   vpcDiscovery:
   # Documentation - https://www.serverless.com/plugins/serverless-vpc-discovery
@@ -75,7 +74,7 @@ functions:
     memorySize: 512
     timeout: 10
     tags:
-      PYTHON_VERSION: ${self:custom.pythonVersion}
+      PYTHON_VERSION: ${env:SERVERLESS_PYTHON_VERSION_TAG}
     environment:
       PROFILE: ${env:PROFILE}
       POWERTOOLS_SERVICE_NAME:  ${env:PROGRAMME}-${env:TEAM_ID}
@@ -101,7 +100,7 @@ functions:
     memorySize: 512
     timeout: 10
     tags:
-      PYTHON_VERSION: ${self:custom.pythonVersion}
+      PYTHON_VERSION: ${env:SERVERLESS_PYTHON_VERSION_TAG}
     environment:
       PROFILE: ${env:PROFILE}
       POWERTOOLS_SERVICE_NAME:  ${env:PROGRAMME}-${env:TEAM_ID}
